@@ -33,11 +33,11 @@ Code change implemented. Affected docs identified.
 ## 5.22.5 Ordered Steps
 
 1. Identify all affected docs using .cursor/rules/documentation.md trigger list
-2. For generated docs (endpoints.md, environment-vars.md, error-codes.md): update the source, then `make docs:generate`
+2. For generated/reference docs, a human or AI agent may update the source and then run `make docs:generate`; review the diff before committing
 3. For manual docs: edit the specific sections that changed
 4. Update doc indexes if new files were added
 5. Run `make docs:check` — verify no broken links
-6. For generated docs: verify make docs:check shows no drift
+6. For generated docs: verify the generated diff is intentional; CI does not enforce generated-doc drift
 7. Commit docs changes alongside the code change (same PR or immediate follow-up)
 
 ## 5.22.6 Expected Artifacts / Outputs
@@ -47,7 +47,7 @@ Updated documentation files. make docs:check passing.
 ## 5.22.7 Validation Checks
 
 - [ ] All trigger conditions checked
-- [ ] Generated docs regenerated via make docs:generate
+- [ ] Generated docs regenerated via make docs:generate only when a human/AI agent chose to refresh them
 - [ ] Manual docs updated with specific changed sections
 - [ ] make docs:check passes
 

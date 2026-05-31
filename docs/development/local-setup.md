@@ -53,7 +53,7 @@ Run `make help` for the full list. Common targets:
 | `make queue-validate` / `make queue:validate` | Validate `queue/queue.csv` |
 | `make audit-self` / `make audit:self` | Repo self-audit |
 | `make docs-check` / `make docs:check` | Documentation link check |
-| `make docs-generate` / `make docs:generate` | Regenerate generated docs |
+| `make docs-generate` / `make docs:generate` | Manual human/AI-agent generated-doc refresh; not run by CI |
 | `make security-scan` / `make security:scan` | Bandit + pip-audit |
 | `make secret-scan` / `make secret:scan` | Heuristic secret-pattern scan |
 | `make env-sync` / `make env:sync` | Compare `.env.example` with `Settings` fields |
@@ -61,7 +61,7 @@ Run `make help` for the full list. Common targets:
 | `make coverage-ratchet` / `make coverage:ratchet` | Compare `coverage.xml` to policy floor |
 | `make rule-lint` / `make rule:lint` | Lint `.cursor/rules` front matter |
 | `make adr-index` / `make adr:index` | Regenerate `docs/adr/README.md` |
-| `make codebase-summary` | Regenerate `docs/generated/CODEBASE_SUMMARY.md` |
+| `make codebase-summary` | Manual human/AI-agent refresh of `docs/generated/CODEBASE_SUMMARY.md`; not run by CI |
 
 Colon forms (e.g. `make queue:peek`) are aliases to the hyphenated targets in the root `Makefile`.
 

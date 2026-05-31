@@ -121,11 +121,11 @@ docs-check:
 docs-map-check:
 	@python3 scripts/check_docs_map.py
 
-## docs-generate: placeholder for generated docs
+## docs-generate: manual human/AI-agent docs generation (not CI)
 docs-generate:
 	@scripts/docs-generate.sh
 
-## docs-index: placeholder for docs index
+## docs-index: manual human/AI-agent docs index helper (not CI)
 docs-index:
 	@scripts/docs-index.sh
 
@@ -237,11 +237,11 @@ profile-enable:
 env-generate:
 	@scripts/generate-env.sh
 
-## codebase-summary: regenerate docs/generated/CODEBASE_SUMMARY.md
+## codebase-summary: manual human/AI-agent docs/generated/CODEBASE_SUMMARY.md refresh
 codebase-summary:
 	@scripts/codebase-summary.sh
 
-## skill-docs-gen: run docs-generator.py (regenerate docs/generated)
+## skill-docs-gen: manual human/AI-agent docs-generator.py run (not CI)
 skill-docs-gen:
 	@python3 skills/repo-governance/docs-generator.py --mode generate --repo-root .
 

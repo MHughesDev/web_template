@@ -118,6 +118,4 @@ if errors > 0:
 print("Link and reference checks passed")
 PY
 
-echo "Checking generated docs for drift..."
-python3 "$ROOT/skills/repo-governance/docs-generator.py" --mode check --repo-root "$ROOT"
 echo "docs:check OK"
