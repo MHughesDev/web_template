@@ -5,7 +5,7 @@ SHELL := /usr/bin/env bash
 .DEFAULT_GOAL := help
 
 .PHONY: help dev dev-api dev-web lint lint-web fmt fmt-check fmt-fix typecheck test test-web test-unit test-integration test-smoke \
-        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-check docs-map-check docs-generate docs-index \
+        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-generate docs-index hooks-install \
         queue-peek queue-top-item queue-validate queue-archive queue-archive-top queue-pr-merge queue-graph queue-analyze queue-metrics \
         prompt-list skills-list rules-check audit-self \
         security-scan secret-scan image-build image-scan \
@@ -16,7 +16,8 @@ SHELL := /usr/bin/env bash
         codebase-summary skill-docs-gen \
         test-scaffold env-sync coverage-ratchet rule-lint adr-index \
         web-install generate-client \
-        clean health-check project-health
+        clean health-check project-health \
+        hooks-install
 
 ## help: Show targets (see also: scripts/README.md)
 help:
@@ -113,13 +114,6 @@ db-reset:
 db-seed:
 	@scripts/seed-db.sh
 
-## docs-check: documentation link check
-docs-check:
-	@scripts/docs-check.sh
-
-## docs-map-check: verify DOCS_MAP.md and doc_id frontmatter invariants
-docs-map-check:
-	@python3 scripts/check_docs_map.py
 
 ## docs-generate: manual human/AI-agent docs generation (not CI)
 docs-generate:
@@ -225,6 +219,10 @@ docker-build:
 init:
 	@scripts/init-repo.sh
 
+## hooks-install: install pre-commit hooks (run once after cloning)
+hooks-install:
+	@scripts/install-hooks.sh
+
 ## scaffold-module: MODULE= name
 scaffold-module:
 	@MODULE="$(MODULE)" scripts/scaffold-module.sh
@@ -302,7 +300,6 @@ queue\:analyze: queue-analyze
 queue\:metrics: queue-metrics
 audit\:self: audit-self
 rules\:check: rules-check
-docs\:check: docs-check
 docs\:generate: docs-generate
 docs\:index: docs-index
 security\:scan: security-scan
@@ -338,3 +335,4 @@ rule\:lint: rule-lint
 adr\:index: adr-index
 
 project\:health: project-health
+hooks\:install: hooks-install

@@ -25,7 +25,6 @@ Table mapping each script to its Make target and purpose:
 | `test-affected.sh` | `make test:affected` | Run pytest with testmon (changed-code only) |
 | `migrate.sh` | `make migrate`, `make migrate:create` | Database migrations |
 | `ci-migrate-dry-run.sh` | `make ci-migrate-dry-run` | SQLite migration preview + apply (parity with CI `migrate-dry-run`) |
-| `docs-check.sh` | `make docs:check` | Check documentation links and references without generating docs |
 | `docs-generate.sh` | `make docs:generate` | Manual human/AI-agent docs generation helper; not run by CI |
 | `docs-index.sh` | `make docs:index` | Manual human/AI-agent docs index helper; not run by CI |
 | `queue-peek.sh` | `make queue:peek` | Raw CSV: header + first data row |

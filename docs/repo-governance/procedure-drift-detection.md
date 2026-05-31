@@ -26,12 +26,9 @@ Drifted procedures cause agents and engineers to follow stale instructions — p
 
 ## 14.4.2 Detection methods
 
-### 1. Automated link checking (`make docs:check`)
 
-Catches broken file references. Run on every PR. See `docs/repo-governance/documentation-freshness.md` for details.
 
 ```bash
-make docs:check
 ```
 
 ### 2. Makefile target audit
@@ -107,7 +104,6 @@ When drift is detected:
 2. **Check git log** — when did the code change? Who changed it?
 3. **Update the procedure** — correct all stale steps, commands, and references.
 4. **Add a test for the step** if the drift could have been caught automatically.
-5. **Consider adding a `make docs:check` rule** if the type of drift is automatable.
 6. **Open a queue item** if the remediation requires more than 30 minutes.
 
 ### Fast-path for target renames
@@ -129,13 +125,11 @@ old-target:
 The best way to handle drift is to prevent it:
 
 - **Update docs in the same PR as the code change.** PR template includes a docs checklist.
-- **Add `make docs:check` to your PR pre-flight** (already runs in CI).
 - **When removing a script**, grep `docs/` for references before deleting.
 - **When renaming a target**, update all procedure references in the same commit.
 - **Use stable target names** — prefer `make migrate` over `make db:migrate:run:now` to reduce surface area.
 
 ## 14.4.7 Related
 
-- `docs/repo-governance/documentation-freshness.md` — staleness indicators and `make docs:check`
 - `docs/repo-governance/improvement-loops.md` — encoding drift findings into skills and rules
 - `docs/repo-governance/audits.md` — `make audit:self` checks including `makefile_help`

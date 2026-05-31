@@ -10,8 +10,8 @@ summary: "Versioning policy, current active version, deprecation policy, and mig
 <!-- status: pending-init -->
 <!-- initialized-by: skills/init/initialize-repo.md -->
 
-> **Pending initialization.** This document is written by the `initialize-repo` skill.
-> Run `make init:from-idea` to populate from `IDEA.md`.
+> **Pending initialization.** This document is written by the `repo_initialize` skill.
+> Run `skills/init/repo_initialize.md` after completing `IDEA.md`.
 
 ## Purpose
 

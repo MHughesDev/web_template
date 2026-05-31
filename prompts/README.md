@@ -57,7 +57,6 @@ Table of all templates in this directory. Columns: Template file, Role, When to 
 - test_writer.md — Test authoring
 - debugger.md — Failure isolation
 - refactorer.md — Behavior-preserving refactoring
-- documentation_updater.md — Documentation sync
 - migration_author.md — Database migrations
 - queue_processor.md — Queue item execution (implementation; pair with queue_worker_executor.md)
 - queue_worker_executor.md — **Canonical queue worker**: read QUEUE_INSTRUCTIONS + QUEUE_AGENT_PROMPT; **never** edit queue.csv / queuearchive.csv
@@ -67,7 +66,6 @@ Table of all templates in this directory. Columns: Template file, Role, When to 
 - incident_triage_agent.md — Incident classification
 - performance_audit_agent.md — Performance review
 - repo_bootstrap_agent.md — Fresh clone to green dev
-- spec_hardening_agent.md — Spec alignment
 - skill_authoring_agent.md — Skill creation/update
 - rule_authoring_agent.md — Rule creation/update
 - skill_searcher.md — Task-to-skill matching subroutine

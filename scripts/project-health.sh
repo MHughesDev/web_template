@@ -9,10 +9,8 @@ echo "[project:health] queue validation"
 make queue:validate
 
 echo "[project:health] docs map invariants"
-python3 scripts/check_docs_map.py
 
 echo "[project:health] docs check"
-make docs:check
 
 echo "[project:health] adr index regeneration check"
 python3 skills/repo-governance/adr-index-generator.py --repo-root . >/dev/null

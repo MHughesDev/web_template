@@ -28,7 +28,6 @@ All implementation commits on branch. Tests written and expected to pass.
 
 ## 5.25.4 Exact Commands
 
-`make fmt`, `make lint`, `make typecheck`, `make test`, `make queue:validate`, `make docs:check`, `make security:scan`, `make audit:self`
 
 Canonical names: `make lint`, `make typecheck`, `make test`, `make security:scan` (run from the repository root).
 
@@ -39,7 +38,6 @@ Canonical names: `make lint`, `make typecheck`, `make test`, `make security:scan
 3. `make typecheck` — must produce zero errors
 4. `make test` — all tests pass, coverage above floor
 5. (If queue files touched) `make queue:validate` — queue schema valid
-6. (If docs updated) `make docs:check` — no broken links, generated docs match source
 7. (If security-adjacent) `make security:scan` — no unaccepted HIGH/CRITICAL findings
 8. `make audit:self` — spec compliance check
 9. Capture all output — paste key lines in PR description

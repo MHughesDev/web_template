@@ -40,7 +40,6 @@ Ordered list of all procedure files with one-line descriptions and links. Ordere
 
 **Development lifecycle:**
 - [add-mcp-tool.md](add-mcp-tool.md) — Add or expose MCP tools (fastapi-mcp / OpenAPI)
-- [update-documentation.md](update-documentation.md) — When and how to update docs alongside code
 - [update-or-create-skill.md](update-or-create-skill.md) — Skill lifecycle management
 - [update-or-create-rule.md](update-or-create-rule.md) — Rule lifecycle management
 - [dependency-upgrade.md](dependency-upgrade.md) — Safe dependency upgrades with CI evidence

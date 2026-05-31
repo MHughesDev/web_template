@@ -21,10 +21,9 @@ Skills are execution playbooks, not canonical policy storage. Repository behavio
 
 ## Quick task-to-skill guide
 
-- **Initialize repo from IDEA.md** → `skills/init/idea-validator.md`, `skills/init/repo_initialize.md`, `skills/init/queue-seeder.md`
+- **Initialize repo from IDEA.md** → `skills/init/idea_author.md` (fill IDEA.md), then `skills/init/repo_initialize.md`
 - **Implement a queue item end-to-end** → `skills/agent-ops/task-planning.md`, `skills/agent-ops/implementation-handoff.md`, `skills/testing/pytest-conventions.md`
 - **Add a new bounded context** → `skills/backend/fastapi-router-module.md`, `skills/backend/service-repository-pattern.md`, `skills/testing/api-contract-testing.md`
-- **Make architecture decisions** → `skills/repo-governance/writing-adrs.md`, `skills/repo-governance/maintaining-procedural-docs.md`
 - **Add security-sensitive changes** → `skills/security/secret-handling.md`, `skills/security/rbac-tenant-isolation.md`, `skills/security/dependency-review.md`
 
 ## Skill Format
@@ -34,14 +33,10 @@ Every skill must have: Purpose, When to invoke, Prerequisites, Relevant files/ar
 ## Skills by Category
 
 ### Initialization (`skills/init/`)
-| Skill | When to invoke | Machinery |
-|-------|---------------|-----------|
-| `idea-validator.md` | Validate IDEA.md completeness before initialization | `idea-validator.py` |
-| `archetype-mapper.md` | Map archetype+profiles to scaffolding plan | `archetype-mapper.py` |
-| `module-template-generator.md` | Generate files for a domain module | `module-scaffolder.py` |
-| `queue-seeder.md` | Populate queue.csv from initialized docs | `queue-seeder.py` |
-| `profile-resolver.md` | Resolve profile enablement with dependency checking | `profile-resolver.py` |
-| `env-generator.md` | Generate .env.example for enabled profiles | `env-generator.py` |
+| Skill | When to invoke |
+|-------|---------------|
+| `idea_author.md` | Turn raw product notes into a complete IDEA.md |
+| `repo_initialize.md` | Run after IDEA.md is complete — produces docs, ADRs, MVP queue rows |
 
 ### Agent Operations (`skills/agent-ops/`)
 | Skill | When to invoke | Machinery |
@@ -62,7 +57,6 @@ Every skill must have: Purpose, When to invoke, Prerequisites, Relevant files/ar
 | `writing-agents-md.md` | Author or update AGENTS.md per §4 | — |
 | `authoring-cursor-rules.md` | Create or update .cursor/rules/ files | `rule-linter.py` |
 | `adding-reusable-commands.md` | Add Make targets or Cursor commands | — |
-| `maintaining-procedural-docs.md` | Keep docs/procedures/ current | — |
 | `writing-adrs.md` | Author Architecture Decision Records | `adr-index-generator.py` |
 | `repository-hygiene.md` | Periodic cleanup: stale branches, orphaned docs | — |
 | `docs-generator.md` | Extend and run docs generation pipeline | `docs-generator.py`, `docs-freshness-checker.py` |

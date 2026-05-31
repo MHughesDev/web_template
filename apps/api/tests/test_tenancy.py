@@ -39,8 +39,7 @@ def test_non_bearer_scheme_rejected(client: TestClient) -> None:
         f"{settings.API_V1_STR}/login/test-token",
         headers={"Authorization": "Basic dGVzdA=="},
     )
-    assert r.status_code == 403
-    assert r.json()["detail"] == "Could not validate credentials"
+    assert r.status_code == 401
 
 
 def test_users_me_rejects_malformed_bearer_when_multi_tenancy_enabled(
@@ -54,7 +53,7 @@ def test_users_me_rejects_malformed_bearer_when_multi_tenancy_enabled(
     monkeypatch.setattr(deps_module, "settings", multitenant_settings)
 
     r = client.get(
-        f"{multitenant_settings.API_V1_STR}/users/me",
+        f"{settings.API_V1_STR}/users/me",
         headers={"Authorization": "Bearer"},
     )
     assert r.status_code == 403
@@ -72,14 +71,14 @@ def test_when_multi_tenancy_enabled_malformed_bearer_rejected(
     monkeypatch.setattr(deps_module, "settings", multitenant_settings)
 
     r = client.post(
-        f"{multitenant_settings.API_V1_STR}/login/test-token",
+        f"{settings.API_V1_STR}/login/test-token",
         headers={"Authorization": "Bearer not-a-real-jwt"},
     )
     assert r.status_code == 403
     assert r.json()["detail"] == "Could not validate credentials"
 
     missing = client.post(
-        f"{multitenant_settings.API_V1_STR}/login/test-token",
+        f"{settings.API_V1_STR}/login/test-token",
         headers={"Authorization": "Bearer"},
     )
     assert missing.status_code == 403

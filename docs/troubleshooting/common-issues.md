@@ -26,7 +26,6 @@ Alembic revision not found → run `make db:reset`. Conflict in migration histor
 
 ## 17.1.4 Documentation Link Failures
 
-`make docs:check` failures indicate broken links or stale repository references. Fix the referenced docs manually. If generated reference docs are stale, a human or AI agent may run `make docs:generate`, review the diff, and commit it.
 
 ## 17.1.5 Python Version Issues
 

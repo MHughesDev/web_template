@@ -5,7 +5,6 @@ description: Documentation update triggers. When docs MUST be updated alongside 
 
 # .cursor/rules/documentation.md
 
-When to update documentation with code. Complements **[AGENTS.md](../../AGENTS.md)** section 8 and **`docs/procedures/update-documentation.md`**.
 
 ## Environment variables
 
@@ -30,7 +29,6 @@ When to update documentation with code. Complements **[AGENTS.md](../../AGENTS.m
 ## Procedures
 
 1. If a **`make`** target or step order in a procedure changes, update that **`docs/procedures/*.md`** file.
-2. After doc edits, run **`make docs:check`** when available.
 
 ## Generated docs
 

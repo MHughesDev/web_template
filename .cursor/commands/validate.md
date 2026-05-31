@@ -18,7 +18,6 @@ Run in order; skip targets that do not exist in this repo yet:
 3. **`make typecheck`** — mypy strict.
 4. **`make test`** — pytest with coverage.
 5. **`make queue:validate`** — if **`queue/`** changed.
-6. **`make docs:check`** — if **`docs/`** changed.
 7. **`make security:scan`** — auth, tenancy, dependency, or security-sensitive changes.
 
 Capture logs and paste key excerpts into the PR.

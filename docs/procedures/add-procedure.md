@@ -11,7 +11,6 @@ updated: "2026-05-17"
 
 **Purpose:** Add a new procedure to the repository following the canonical format and sizing guidelines.
 
-**Reference:** See [`docs/BRAINSTORM/docs-restructuring-plan.md`](../../BRAINSTORM/docs-restructuring-plan.md) for procedure sizing philosophy and target structure.
 
 ---
 
@@ -96,7 +95,6 @@ Write this in 1-2 sentences. If you can't, the scope is unclear.
 
 **doc_id format:** `5.NN` (always 2 digits after section)
 
-Check `docs/DOCS_MAP.md` for next available ID in section 5.
 
 ### 4. Create procedure file
 
@@ -107,7 +105,6 @@ Create `docs/procedures/{kebab-case-title}.md`:
 doc_id: "5.NN"
 title: "kebab-case-title"
 section: "Procedures"
-summary: "One-line summary for DOCS_MAP."
 status: "draft"
 updated: "YYYY-MM-DD"
 ---
@@ -175,7 +172,6 @@ Follow the template structure:
 - Code examples show exact commands
 - Use `make` targets, not raw shell
 
-### 6. Update DOCS_MAP.md
 
 Add entry to Section 5 table:
 
@@ -185,7 +181,6 @@ Add entry to Section 5 table:
 
 Run validation:
 ```bash
-make docs:map-check
 ```
 
 ### 7. Update procedures index
@@ -204,7 +199,6 @@ Reference the new procedure from:
 
 Include in PR:
 - New procedure file
-- DOCS_MAP.md update
 - Procedures index update
 - Cross-reference additions
 
@@ -218,14 +212,12 @@ Include in PR:
 
 ### Changes
 - Created `docs/procedures/{file}.md`
-- Updated `docs/DOCS_MAP.md`
 - Updated `docs/procedures/README.md`
 - Added cross-references to: {files}
 
 ### Verification
 - [ ] Procedure follows sizing guidelines (5-15 steps)
 - [ ] doc_id unique and sequential
-- [ ] DOCS_MAP.md passes validation
 - [ ] Cross-references added
 ```
 
@@ -239,10 +231,8 @@ Before marking complete:
 - [ ] 3-15 steps (if outside range, justify in PR)
 - [ ] Each step starts with verb
 - [ ] Prerequisites clearly stated
-- [ ] DOCS_MAP.md updated
 - [ ] Procedures index updated
 - [ ] Cross-references added
-- [ ] `make docs:map-check` passes
 
 ---
 
@@ -267,7 +257,5 @@ If a procedure grows beyond 15 steps:
 
 ## See Also
 
-- Restructuring plan: `docs/BRAINSTORM/docs-restructuring-plan.md`
 - Add skill: `docs/procedures/update-or-create-skill.md`
 - Add rule: `docs/procedures/update-or-create-rule.md`
-- DOCS_MAP: `docs/DOCS_MAP.md`

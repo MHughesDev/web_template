@@ -1,7 +1,6 @@
 # skills/repo-governance/repository-hygiene.md
 
 <!-- CROSS-REFERENCES -->
-<!-- - Related procedure: docs/procedures/update-documentation.md -->
 
 **Purpose:** Periodic repo cleanup: stale branches, orphaned docs, unused dependencies, dead code detection. Per spec §26.4 item 54.
 
@@ -52,7 +51,6 @@ Hygiene changes committed, audit passing.
 
 ## Related Procedures
 
-docs/procedures/update-documentation.md, docs/repo-governance/improvement-loops.md
 
 ## Related Prompts
 

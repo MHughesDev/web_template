@@ -131,9 +131,7 @@ Edit frontmatter:
 doc_id: "7.N"  # Next available in Section 7
 ```
 
-Check `docs/DOCS_MAP.md` Section 7 for next ID.
 
-### 6. Update DOCS_MAP
 
 Add to Section 7 table:
 ```markdown
@@ -203,7 +201,6 @@ Proposed → Accepted → Deprecated
 - [ ] At least 2 alternatives listed
 - [ ] Consequences honest (not just benefits)
 - [ ] doc_id assigned
-- [ ] DOCS_MAP updated
 - [ ] ADR index updated
 
 ---
@@ -222,4 +219,3 @@ Proposed → Accepted → Deprecated
 
 - ADR template: `docs/adr/template.md`
 - Index: `docs/adr/README.md`
-- DOCS_MAP: `docs/DOCS_MAP.md`

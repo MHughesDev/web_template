@@ -315,13 +315,11 @@ Sometimes the implementation row also has to update a doc; sometimes the docs ch
 ```
 Q-EX3,mvp-1,3,docs,S,
 "Update docs/api/endpoints.md and docs/api/error-codes.md to describe the new GET /widgets/{id} endpoint and WIDGET_NOT_FOUND error.",
-"1. docs/api/endpoints.md has one row per HTTP method for the widgets resource | 2. docs/api/error-codes.md has a WIDGET_NOT_FOUND entry (404, message, condition, resolution) | 3. make docs:check passes",
 ,
 ,
 ,
 "docs/api/endpoints.md,docs/api/error-codes.md,apps/api/app/api/routes/widgets.py",
 "docs/api/endpoints.md,docs/api/error-codes.md",
-"make docs:check",
 "Q-EX1",
 ,
 2026-05-18
@@ -334,13 +332,11 @@ The terminal row in a batch. Picks up after all feature and docs rows in the bat
 ```
 Q-EX4,mvp-1,99,release,S,
 "Run full validation matrix for mvp-1 and update docs/project-state.md.",
-"1. make lint, make fmt-check, make typecheck, make test all pass | 2. make queue:validate, make docs:check, python3 scripts/check_docs_map.py, python3 scripts/repo_self_audit.py all pass | 3. docs/project-state.md updated to describe mvp-1 outcomes and the next focus",
 "Do not implement new features here",
 "Use only existing make targets — do not invent commands",
 ,
 "docs/project-state.md,queue/queue.csv,queue/queuearchive.csv",
 "docs/project-state.md",
-"make lint && make typecheck && make test && make queue:validate && make docs:check",
 "Q-EX1,Q-EX3",
 ,
 2026-05-18

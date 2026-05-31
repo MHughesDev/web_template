@@ -13,6 +13,12 @@ updated: "2026-05-17"
 
 **Purpose:** Detailed local development setup. All Make/Task targets documented with expected behavior (§10.1).
 
+## 3.7.0 Dev Container (recommended)
+
+Open this repo in VS Code or GitHub Codespaces and accept the "Reopen in Container" prompt. The `.devcontainer/` config builds a Dockerfile with Python 3.12, uv, Bun, Make, and Docker CLI, then runs `uv sync` and `bun install` automatically.
+
+No local tooling installation required.
+
 ## 3.7.1 Overview
 
 Detailed local development setup. All Make/Task targets documented with expected behavior (§10.1). See [AGENTS.md](../../AGENTS.md) for validation commands.
@@ -52,7 +58,6 @@ Run `make help` for the full list. Common targets:
 | `make queue-pr-merge` / `make queue:pr-merge` | After archive+validate — merge PR (`gh pr merge --merge --delete-branch`; optional `PR_NUMBER=`) |
 | `make queue-validate` / `make queue:validate` | Validate `queue/queue.csv` |
 | `make audit-self` / `make audit:self` | Repo self-audit |
-| `make docs-check` / `make docs:check` | Documentation link check |
 | `make docs-generate` / `make docs:generate` | Manual human/AI-agent generated-doc refresh; not run by CI |
 | `make security-scan` / `make security:scan` | Bandit + pip-audit |
 | `make secret-scan` / `make secret:scan` | Heuristic secret-pattern scan |

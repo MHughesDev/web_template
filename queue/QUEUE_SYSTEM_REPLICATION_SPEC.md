@@ -349,8 +349,7 @@ Queue seeding script:
 - `scripts/idea-to-queue.sh`
 
 Behavior:
-- prefer `init-manifest.json` path via `skills/init/queue-seeder.py`
-- fallback to parsing `IDEA.md` via `--from-idea`
+- seed queue rows by running `skills/init/repo_initialize.md` Phase 4 after IDEA.md is complete
 
 This is required if you want full repo parity (not just runtime queue processing).
 

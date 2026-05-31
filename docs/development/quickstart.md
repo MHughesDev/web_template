@@ -29,4 +29,3 @@ Then fill `IDEA.md` and ask an AI agent to run `skills/init/repo_initialize.md`.
 
 ## Documentation policy
 
-Documentation updates are human-authored or AI-agent-authored changes reviewed in pull requests. CI may check links and references with `make docs:check`, but CI must not run documentation generators that rewrite repository docs.
