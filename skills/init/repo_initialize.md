@@ -88,7 +88,6 @@ Output: design docs are updated so they are the single authoritative description
 
 Output: every doc under `docs/` that the spec implies is up to date. Docs are produced from the spec, not directly from `IDEA.md`.
 
-Touch the docs listed below. For docs that already exist as template scaffolds, **rewrite the body** but preserve the frontmatter `doc_id` and section structure used by `docs-map-check`.
 
 | Doc | Source sections | What to write |
 |-----|-----------------|---------------|
@@ -116,9 +115,7 @@ Conditional docs (only write real content when the corresponding capability is i
 For every touched doc:
 - Update frontmatter: `status: "current"`, `updated: <today>`.
 - Reference the spec section it derives from in a top-of-file comment.
-- Run `make docs:check` and `make docs-map-check` after writing.
 
-**Gate:** `make docs:check` and `make docs-map-check` pass.
 
 ---
 
@@ -174,8 +171,6 @@ The first executable row at the top of `queue/queue.csv` must have:
 Run, in order:
 
 1. `make queue:validate`
-2. `make docs:check`
-3. `make docs-map-check` (or `python3 scripts/check_docs_map.py`)
 4. `python3 scripts/repo_self_audit.py`
 5. `make lint && make fmt-check` (only if any executable scripts changed)
 
@@ -221,8 +216,6 @@ Initialization is **not complete** until every item below is true. If any item c
 6. **No product feature code was written.** `git diff --stat apps/api/app/ apps/web/src/` is empty for files implementing product behavior. Comment-only header edits and `.env.example` additions are tolerated.
 7. **All validation gates pass:**
    - `make queue:validate` exits 0.
-   - `make docs:check` exits 0.
-   - `python3 scripts/check_docs_map.py` exits 0.
    - `python3 scripts/repo_self_audit.py` reports PASS on every check (`required_files`, `queue_validate`, `file_title_comments`, `skills_headings`, `prompts_frontmatter`, `prompts_title_and_fields`, `makefile_help`).
 8. **If any audit failure is unavoidable** (e.g. an `IDEA.md` instruction conflicts with a template invariant), the handoff explicitly documents the failure, the reason it cannot be cleanly fixed, and the queue row created to address it. The skill never silently waves audit failures through.
 
@@ -237,6 +230,4 @@ Quick checklist mirroring the acceptance criteria above — useful during execut
 - [ ] Founding ADR(s) added for any template-default contradictions.
 - [ ] `git diff apps/api/app/ apps/web/src/` shows no product code changes.
 - [ ] `make queue:validate` passes.
-- [ ] `make docs:check` passes.
-- [ ] `python3 scripts/check_docs_map.py` passes.
 - [ ] `python3 scripts/repo_self_audit.py` passes (or every failure is documented in the handoff).

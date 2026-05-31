@@ -142,7 +142,6 @@ Minimum checks before opening a PR:
 | `make test` | Full test suite with coverage (pre-PR gate) |
 | `make test:affected` | Changed-code only (fast per-increment validation) |
 | `make queue:validate` | If any queue CSV or queue docs were touched |
-| `make docs:check` | If documentation content changed |
 | `make security:scan` | Auth, tenancy, secrets, or security-sensitive changes |
 
 **When to add tests:** any behavior change, new endpoint, bug fix (regression test first), new module.

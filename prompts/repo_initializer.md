@@ -12,7 +12,6 @@ expected_outputs:
   - "PR titled `init: <product name>` summarizing what was initialized and what remains blocked."
 validation_expectations:
   - "make queue:validate passes"
-  - "make docs:check passes"
   - "python3 scripts/repo_self_audit.py does not regress beyond the pre-existing baseline"
 constraints:
   - "Initialization is documentation-first and queue-first. Do not write product feature code."
@@ -58,5 +57,4 @@ A single PR titled `init: <product name>` whose description contains:
 - Docs created or refreshed (grouped by phase).
 - Mapping of every `IDEA.md §4` MVP bullet to the queue row(s) that fulfill it.
 - Every blocked open-question row created, with the source `§19` question.
-- Validation command outputs (last 5 lines each of `make queue:validate`, `make docs:check`, `python3 scripts/repo_self_audit.py`).
 - The next executable row at the top of `queue/queue.csv`.

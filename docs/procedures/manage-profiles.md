@@ -265,7 +265,6 @@ rm -rf packages/<profile>/
 ### 4. Update docs
 
 - Remove from `docs/optional-clients/`
-- Update DOCS_MAP.md (retire the doc_id)
 - Update any cross-references
 
 ### 5. Verify clean removal
@@ -321,4 +320,3 @@ After Remove:
 - Web profile: `docs/optional-clients/web.md`
 - Mobile profile: `docs/optional-clients/mobile.md`
 - Add make target: `docs/procedures/add-make-target.md`
-- DOCS_MAP: `docs/DOCS_MAP.md`

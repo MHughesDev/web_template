@@ -52,7 +52,6 @@ Run `make help` for the full list. Common targets:
 | `make queue-pr-merge` / `make queue:pr-merge` | After archive+validate — merge PR (`gh pr merge --merge --delete-branch`; optional `PR_NUMBER=`) |
 | `make queue-validate` / `make queue:validate` | Validate `queue/queue.csv` |
 | `make audit-self` / `make audit:self` | Repo self-audit |
-| `make docs-check` / `make docs:check` | Documentation link check |
 | `make docs-generate` / `make docs:generate` | Manual human/AI-agent generated-doc refresh; not run by CI |
 | `make security-scan` / `make security:scan` | Bandit + pip-audit |
 | `make secret-scan` / `make secret:scan` | Heuristic secret-pattern scan |

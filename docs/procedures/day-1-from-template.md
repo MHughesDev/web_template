@@ -113,8 +113,6 @@ Unix / Git Bash / WSL:
 
 ```bash
 make queue:validate
-make docs:check
-python3 scripts/check_docs_map.py
 python3 scripts/repo_self_audit.py
 ```
 
@@ -122,8 +120,6 @@ PowerShell:
 
 ```powershell
 make queue:validate
-make docs:check
-python scripts/check_docs_map.py
 python scripts/repo_self_audit.py
 ```
 
@@ -142,7 +138,6 @@ Read the row, its `context_files`, `touch_files`, and relevant skills before wri
 - `scripts/rename-from-template.py` has been run or deliberately skipped with a documented reason.
 - `scripts/template_token_sweep.py <project-name>` has been reviewed and remaining template tokens are either replaced or accepted.
 - `IDEA.md` is complete enough for initialization.
-- `make queue:validate`, `make docs:check`, `python3 scripts/check_docs_map.py`, and `python3 scripts/repo_self_audit.py` pass or have documented environment-limited warnings.
 - The first implementation queue item is started only after initialization outputs are reviewed.
 
 ## Related resources

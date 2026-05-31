@@ -99,8 +99,6 @@ For each item in dependency order:
 **Actions (typical order):**
 
 1. Update docs only to reflect **actual** behavior and contracts (not aspirational text).
-2. Update other affected docs per [`docs/procedures/update-documentation.md`](../procedures/update-documentation.md) and repo rules (e.g. `docs/api/endpoints.md`).
-3. Run `make docs:check` (and any doc-generation targets your change requires).
 
 **Optional:** Add or update an **ADR** under `docs/adr/` if the brainstorm implied a durable architectural decision.
 

@@ -18,7 +18,6 @@ Run repository initialization from a fully completed **`IDEA.md`** via the singl
 2. Open and read [`prompts/repo_initializer.md`](../prompts/repo_initializer.md) end-to-end.
 3. Read **`IDEA.md`** completely. If any applicable section is blank or any open question would change MVP architecture, stop and surface those gaps to the developer — do not invent answers.
 4. Run [`skills/init/repo_initialize.md`](../skills/init/repo_initialize.md) end-to-end (six phases: triage → spec → docs → ADR → MVP queue → validate).
-5. Run **`make queue:validate`**, **`make docs:check`**, and **`python3 scripts/repo_self_audit.py`**.
 6. Open **one** PR titled `init: <product name>` summarizing what was initialized and what remains blocked.
 
 ## Expected output

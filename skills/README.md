@@ -24,7 +24,6 @@ Skills are execution playbooks, not canonical policy storage. Repository behavio
 - **Initialize repo from IDEA.md** → `skills/init/idea-validator.md`, `skills/init/repo_initialize.md`, `skills/init/queue-seeder.md`
 - **Implement a queue item end-to-end** → `skills/agent-ops/task-planning.md`, `skills/agent-ops/implementation-handoff.md`, `skills/testing/pytest-conventions.md`
 - **Add a new bounded context** → `skills/backend/fastapi-router-module.md`, `skills/backend/service-repository-pattern.md`, `skills/testing/api-contract-testing.md`
-- **Make architecture decisions** → `skills/repo-governance/writing-adrs.md`, `skills/repo-governance/maintaining-procedural-docs.md`
 - **Add security-sensitive changes** → `skills/security/secret-handling.md`, `skills/security/rbac-tenant-isolation.md`, `skills/security/dependency-review.md`
 
 ## Skill Format
@@ -62,7 +61,6 @@ Every skill must have: Purpose, When to invoke, Prerequisites, Relevant files/ar
 | `writing-agents-md.md` | Author or update AGENTS.md per §4 | — |
 | `authoring-cursor-rules.md` | Create or update .cursor/rules/ files | `rule-linter.py` |
 | `adding-reusable-commands.md` | Add Make targets or Cursor commands | — |
-| `maintaining-procedural-docs.md` | Keep docs/procedures/ current | — |
 | `writing-adrs.md` | Author Architecture Decision Records | `adr-index-generator.py` |
 | `repository-hygiene.md` | Periodic cleanup: stale branches, orphaned docs | — |
 | `docs-generator.md` | Extend and run docs generation pipeline | `docs-generator.py`, `docs-freshness-checker.py` |

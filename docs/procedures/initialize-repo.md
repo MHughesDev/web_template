@@ -32,8 +32,6 @@ updated: "2026-05-17"
 ## Exact commands
 
 - `make queue:validate`
-- `make docs:check`
-- `python3 scripts/check_docs_map.py`
 - `python3 scripts/repo_self_audit.py`
 
 (No `make idea:*` target exists. Initialization is driven by an AI skill, not a Make orchestrator.)
@@ -43,7 +41,6 @@ updated: "2026-05-17"
 1. Read `IDEA.md` end-to-end. Triage every section as complete / N/A / incomplete.
 2. Surface any blocking gaps (incomplete MVP sections, or `§19` open questions that would change architecture). Stop and report back to the developer if any exist.
 3. Run [`skills/init/repo_initialize.md`](../../skills/init/repo_initialize.md) end-to-end. The skill has six phases (triage → spec → docs → ADR → MVP queue → validate) with explicit gates.
-4. Run `make queue:validate`, `make docs:check`, `python3 scripts/repo_self_audit.py`.
 5. Open one PR titled `init: <product name>` with the skill's handoff summary as the description.
 
 ## Acceptance

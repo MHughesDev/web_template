@@ -132,7 +132,6 @@ At the end of each quarter:
 5. **Run `make audit:self`** and review any recurring failures.
 6. **Write the retrospective** in `docs/repo-governance/retrospectives/YYYY-QN.md`.
 7. **Add resulting queue items** to `queue/queue.csv`.
-8. **Update `docs/repo-governance/documentation-freshness.md`** with any new staleness indicators discovered.
 
 ## 14.3.12 Measuring loop effectiveness
 

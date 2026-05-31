@@ -5,7 +5,7 @@ SHELL := /usr/bin/env bash
 .DEFAULT_GOAL := help
 
 .PHONY: help dev dev-api dev-web lint lint-web fmt fmt-check fmt-fix typecheck test test-web test-unit test-integration test-smoke \
-        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-check docs-map-check docs-generate docs-index \
+        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-generate docs-index \
         queue-peek queue-top-item queue-validate queue-archive queue-archive-top queue-pr-merge queue-graph queue-analyze queue-metrics \
         prompt-list skills-list rules-check audit-self \
         security-scan secret-scan image-build image-scan \
@@ -113,13 +113,6 @@ db-reset:
 db-seed:
 	@scripts/seed-db.sh
 
-## docs-check: documentation link check
-docs-check:
-	@scripts/docs-check.sh
-
-## docs-map-check: verify DOCS_MAP.md and doc_id frontmatter invariants
-docs-map-check:
-	@python3 scripts/check_docs_map.py
 
 ## docs-generate: manual human/AI-agent docs generation (not CI)
 docs-generate:
@@ -302,7 +295,6 @@ queue\:analyze: queue-analyze
 queue\:metrics: queue-metrics
 audit\:self: audit-self
 rules\:check: rules-check
-docs\:check: docs-check
 docs\:generate: docs-generate
 docs\:index: docs-index
 security\:scan: security-scan

@@ -31,7 +31,6 @@ Create a new procedure in the repository following canonical structure and sizin
 # Search by keyword
 grep -r "your-concept" docs/procedures/ prompts/ skills/
 
-# Check DOCS_MAP for similar
 make prompt:list | grep -i "concept"
 make skills:list | grep -i "concept"
 ```
@@ -58,7 +57,6 @@ make skills:list | grep -i "concept"
 
 **Find next available:**
 ```bash
-# Look at DOCS_MAP.md Section 5
 # Pick next unused number
 ```
 
@@ -74,7 +72,6 @@ make skills:list | grep -i "concept"
 doc_id: "5.NN"
 title: "kebab-case-title"
 section: "Procedures"
-summary: "One-line summary for DOCS_MAP."
 status: "draft"
 updated: "YYYY-MM-DD"
 ---
@@ -134,9 +131,7 @@ How to verify success.
 
 **See Also:** Cross-references.
 
-### 6. Register in DOCS_MAP
 
-**Edit `docs/DOCS_MAP.md` Section 5:**
 
 Add row to table:
 ```markdown
@@ -169,7 +164,6 @@ Add to index list with one-line description.
 
 **Run checks:**
 ```bash
-make docs:map-check
 ```
 
 **Manual check:**
@@ -183,7 +177,6 @@ make docs:map-check
 
 **Include in PR:**
 - New procedure file
-- DOCS_MAP.md change
 - Procedures index update
 - Cross-reference changes
 
@@ -197,13 +190,11 @@ make docs:map-check
 
 ### Files Changed
 - `docs/procedures/{file}.md` (new)
-- `docs/DOCS_MAP.md` (+1 row)
 - `docs/procedures/README.md` (+1 entry)
 - `skills/.../related.md` (+reference)
 
 ### Verification
 - [ ] Sizing guidelines met
-- [ ] DOCS_MAP check passes
 - [ ] Cross-references added
 ```
 
@@ -245,7 +236,6 @@ If this skill is invoked frequently, consider adding:
 - Interactive prompt for title, scope, steps
 - Auto-generates file from template
 - Assigns next doc_id
-- Updates DOCS_MAP
 
 **Usage:**
 ```bash
@@ -257,7 +247,5 @@ python skills/procedures/add-procedure.py
 ## See Also
 
 - Procedure: `docs/procedures/add-procedure.md` (meta)
-- Plan: `docs/BRAINSTORM/docs-restructuring-plan.md`
-- DOCS_MAP: `docs/DOCS_MAP.md`
 - Skills: `skills/README.md`
 - Prompts: `prompts/README.md`
