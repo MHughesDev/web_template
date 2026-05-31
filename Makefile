@@ -5,7 +5,7 @@ SHELL := /usr/bin/env bash
 .DEFAULT_GOAL := help
 
 .PHONY: help dev dev-api dev-web lint lint-web fmt fmt-check fmt-fix typecheck test test-web test-unit test-integration test-smoke \
-        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-generate docs-index \
+        migrate migrate\:create ci-migrate-dry-run db-reset db-seed docs-generate docs-index hooks-install \
         queue-peek queue-top-item queue-validate queue-archive queue-archive-top queue-pr-merge queue-graph queue-analyze queue-metrics \
         prompt-list skills-list rules-check audit-self \
         security-scan secret-scan image-build image-scan \

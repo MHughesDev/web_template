@@ -76,10 +76,6 @@ Include the full audit summary in the PR description. State: "Audit run: make au
 
 docs/procedures/validate-change.md, docs/repo-governance/audits.md
 
-## Related Prompts
-
-prompts/spec_hardening_agent.md
-
 ## Related Rules
 
 .cursor/rules/global.md (file title comments, §1.7), AGENTS.md §7 (Validation before handoff)
