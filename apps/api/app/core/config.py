@@ -97,6 +97,9 @@ class Settings(BaseSettings):
     RATE_LIMIT_ANON: int = 60   # requests per minute for unauthenticated IPs
     RATE_LIMIT_AUTH: int = 300  # requests per minute for authenticated IPs
 
+    SECURITY_HEADERS_ENABLED: bool = True
+    CSP_POLICY: str = ""  # empty = use middleware default
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (

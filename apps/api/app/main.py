@@ -6,6 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 from app.api.main import api_router
 from app.core.config import settings
 from app.middleware.rate_limit import RateLimitMiddleware
+from app.middleware.security_headers import SecurityHeadersMiddleware
 
 
 def custom_generate_unique_id(route: APIRoute) -> str:
@@ -23,6 +24,9 @@ app = FastAPI(
 
 if settings.RATE_LIMIT_ENABLED:
     app.add_middleware(RateLimitMiddleware)
+
+if settings.SECURITY_HEADERS_ENABLED:
+    app.add_middleware(SecurityHeadersMiddleware)
 
 # Set all CORS enabled origins
 if settings.all_cors_origins:
