@@ -5,6 +5,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from app.api.main import api_router
 from app.core.config import settings
+from app.middleware.audit_log import AuditLogMiddleware
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.middleware.security_headers import SecurityHeadersMiddleware
 
@@ -27,6 +28,9 @@ if settings.RATE_LIMIT_ENABLED:
 
 if settings.SECURITY_HEADERS_ENABLED:
     app.add_middleware(SecurityHeadersMiddleware)
+
+if settings.AUDIT_LOG_ENABLED:
+    app.add_middleware(AuditLogMiddleware)
 
 # Set all CORS enabled origins
 if settings.all_cors_origins:

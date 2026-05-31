@@ -100,6 +100,8 @@ class Settings(BaseSettings):
     SECURITY_HEADERS_ENABLED: bool = True
     CSP_POLICY: str = ""  # empty = use middleware default
 
+    AUDIT_LOG_ENABLED: bool = True
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (
