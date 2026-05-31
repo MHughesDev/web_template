@@ -16,7 +16,8 @@ SHELL := /usr/bin/env bash
         codebase-summary skill-docs-gen \
         test-scaffold env-sync coverage-ratchet rule-lint adr-index \
         web-install generate-client \
-        clean health-check project-health
+        clean health-check project-health \
+        hooks-install
 
 ## help: Show targets (see also: scripts/README.md)
 help:
@@ -218,6 +219,10 @@ docker-build:
 init:
 	@scripts/init-repo.sh
 
+## hooks-install: install pre-commit hooks (run once after cloning)
+hooks-install:
+	@scripts/install-hooks.sh
+
 ## scaffold-module: MODULE= name
 scaffold-module:
 	@MODULE="$(MODULE)" scripts/scaffold-module.sh
@@ -330,3 +335,4 @@ rule\:lint: rule-lint
 adr\:index: adr-index
 
 project\:health: project-health
+hooks\:install: hooks-install

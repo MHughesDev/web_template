@@ -28,3 +28,26 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: queue-validate
+        name: queue validate
+        language: system
+        entry: python3 scripts/queue_validate.py
+        pass_filenames: false
+        always_run: true
+
+      - id: secret-scan
+        name: secret scan
+        language: system
+        entry: python3 skills/security/secret-scanner.py --repo-root .
+        pass_filenames: false
+        always_run: true
+
+      - id: rules-check
+        name: rules check
+        language: system
+        entry: bash scripts/rules-check.sh
+        pass_filenames: false
+        files: ^\.cursor/rules/
