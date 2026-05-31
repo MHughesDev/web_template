@@ -93,6 +93,10 @@ class Settings(BaseSettings):
     FIRST_SUPERUSER: EmailStr
     FIRST_SUPERUSER_PASSWORD: str
 
+    RATE_LIMIT_ENABLED: bool = True
+    RATE_LIMIT_ANON: int = 60   # requests per minute for unauthenticated IPs
+    RATE_LIMIT_AUTH: int = 300  # requests per minute for authenticated IPs
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (
