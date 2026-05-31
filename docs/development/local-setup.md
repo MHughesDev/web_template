@@ -13,6 +13,12 @@ updated: "2026-05-17"
 
 **Purpose:** Detailed local development setup. All Make/Task targets documented with expected behavior (§10.1).
 
+## 3.7.0 Dev Container (recommended)
+
+Open this repo in VS Code or GitHub Codespaces and accept the "Reopen in Container" prompt. The `.devcontainer/` config builds a Dockerfile with Python 3.12, uv, Bun, Make, and Docker CLI, then runs `uv sync` and `bun install` automatically.
+
+No local tooling installation required.
+
 ## 3.7.1 Overview
 
 Detailed local development setup. All Make/Task targets documented with expected behavior (§10.1). See [AGENTS.md](../../AGENTS.md) for validation commands.

@@ -1,6 +1,8 @@
 {
   "name": "Template repository",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
@@ -22,7 +24,7 @@
       }
     }
   },
-  "postCreateCommand": "chmod +x setup.sh run.sh 2>/dev/null; ./setup.sh",
+  "postCreateCommand": "chmod +x setup.sh run.sh 2>/dev/null && uv sync --group dev && cd apps/web && bun install && cd ../ && cp .env.example .env 2>/dev/null || true",
   "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
   "mounts": [
