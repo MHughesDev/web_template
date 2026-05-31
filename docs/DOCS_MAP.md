@@ -70,6 +70,7 @@ Purpose: Covers local setup, coding standards, testing, env vars, git flow, and 
 | 3.9 | ci | `docs/development/ci.md` | CI pipeline stages, matrix, how to reproduce locally, common CI failures and fixes. |
 | 3.10 | python procedures | `docs/development/python-procedures.md` | Authoritative Python implementation procedures: typing, boundaries, DI, testing, enforced by CI. |
 | 3.11 | commands | `docs/development/commands.md` | Make target catalog scoped to this product (dev / test / db / queue / CI / profiles). |
+| 3.12 | quickstart | `docs/development/quickstart.md` | Day-1 developer quickstart for renaming a new product repository and starting the docs-first initialization workflow. |
 
 ### Section 4 — API
 
@@ -116,6 +117,7 @@ Purpose: Canonical agent SOPs: queue work, implementation, validation, init, mig
 | 5.34 | code review | `docs/procedures/code-review.md` | Review code changes for quality, security, correctness, and standards. |
 | 5.35 | cloud deployment setup | `docs/procedures/cloud-deployment-setup.md` | First-time setup procedure for cloud deployment. |
 | 5.36 | pre-deploy checklist | `docs/procedures/pre-deploy-checklist.md` | Pre-flight validation checklist for cloud deployments. |
+| 5.37 | day 1 from template | `docs/procedures/day-1-from-template.md` | First-day workflow for turning this template into a product repository: clone, rename, fill IDEA.md, initialize docs/queue, then start queue work. |
 | 5.3 | manage profiles | `docs/procedures/manage-profiles.md` | Add, enable, disable, and remove optional application profiles. |
 | 5.4 | add prompt template | `docs/procedures/add-prompt-template.md` | SOP for add-prompt-template. |
 | 5.5 | add queue category | `docs/procedures/add-queue-category.md` | SOP for add-queue-category. |
@@ -336,7 +338,7 @@ Purpose: Database schema documentation, migration SOP, and seed data procedures 
 
 ## 0.5 Machine-generated outputs (no stable doc_id)
 
-These files live under `docs/generated/` and are overwritten by `make docs:generate`. They are validated by `make docs:check` and intentionally omit `doc_id` frontmatter.
+These files live under `docs/generated/` and can be overwritten by a human or AI agent running `make docs:generate`. They intentionally omit `doc_id` frontmatter, and CI must not auto-regenerate them.
 
 - `docs/generated/cursor-rules.md`
 - `docs/generated/CODEBASE_SUMMARY.md`

@@ -9,7 +9,7 @@
 
 ## Purpose
 
-The pipeline is a deterministic indexer / scaffolder. It exists to keep `docs/generated/` files in sync with authoritative sources so CI can fail on drift. It **does not** author architecture, API, data, or operations docs — those are written by a developer or by an AI agent following [`skills/init/repo_initialize.md`](../init/repo_initialize.md).
+The pipeline is a deterministic indexer / scaffolder. It exists to help humans and AI agents refresh `docs/generated/` files from authoritative sources on demand. It **does not** author architecture, API, data, or operations docs — those are written by a developer or by an AI agent following [`skills/init/repo_initialize.md`](../init/repo_initialize.md).
 
 Source-of-truth boundaries this skill respects:
 
@@ -24,7 +24,6 @@ This skill never writes outside `docs/generated/`.
 
 - After any change to a source file that has a corresponding generated doc target (Makefile help lines, Settings, compose, k8s, cursor rules, alembic versions).
 - To add a new source→target mapping to the pipeline.
-- When `make docs:check` fails in CI (regenerate and commit).
 - On release preparation (ensure all generated docs are fresh).
 
 Do **not** invoke this skill for product documentation work. For that, see `skills/init/repo_initialize.md` (initialization) or the relevant `docs/procedures/update-documentation.md` SOP (ongoing).
@@ -48,7 +47,7 @@ Numbered steps for running the pipeline:
 1. `make docs:generate` — regenerate all docs from source
 2. Review changed files: `git diff docs/`
 3. If expected changes: commit with `docs: regenerate from source`
-4. `make docs:check` — verify no drift (should pass after generate + commit)
+4. `make docs:check` — verify links and references before handoff
 
 ## Step-by-Step Method — Extending
 
@@ -60,13 +59,13 @@ Numbered steps for adding a new source→target mapping:
    - Add source annotation comment
 3. Register a new DocTarget in TARGETS with source_paths and target_path
 4. Run `make docs:generate` to test the new generator
-5. Run `make docs:check` to verify it produces stable output
+5. Run the generator twice or inspect the diff to verify it produces stable output
 6. Update `docs/development/docs-generation.md` with the new mapping
 
 ## Command Examples
 
 - `make docs:generate` — generate all docs
-- `make docs:check` — check for drift (CI mode)
+- `make docs:check` — check links and references without generating docs
 - `python skills/repo-governance/docs-generator.py --generate` — generate only
 - `python skills/repo-governance/docs-generator.py --check` — check only
 - `python skills/repo-governance/docs-generator.py --generate --target env-vars` — specific target
@@ -74,7 +73,7 @@ Numbered steps for adding a new source→target mapping:
 ## Validation Checklist
 
 - [ ] make docs:generate runs without error
-- [ ] make docs:check passes (no drift)
+- [ ] make docs:check passes for links and references
 - [ ] New generator produces valid Markdown
 - [ ] Source annotations present in generated sections
 - [ ] docs/development/docs-generation.md updated if new mapping added
@@ -82,12 +81,11 @@ Numbered steps for adding a new source→target mapping:
 ## Common Failure Modes
 
 - **App import error**: generator can't import FastAPI app → endpoint docs fail. Fix: ensure PYTHONPATH includes apps/api/app.
-- **Drift in CI**: generated docs on disk are stale → run make docs:generate locally and commit.
 - **Generator produces unstable output**: timestamps or sort order varies → use deterministic formatting.
 
 ## Handoff Expectations
 
-All generated docs committed, make docs:check passes, new mapping documented.
+All accepted generated docs committed, make docs:check passes, new mapping documented.
 
 ## Related Procedures
 
@@ -103,4 +101,4 @@ prompts/documentation_updater.md
 
 ## Machinery
 
-`skills/repo-governance/docs-generator.py` — the complete generation engine. Supports --generate and --check modes. See file docstring for full API. Invoked by `scripts/docs-generate.sh` and `scripts/docs-check.sh`.
+`skills/repo-governance/docs-generator.py` — the complete generation engine. Supports --generate and --check modes. See file docstring for full API. Invoked by `scripts/docs-generate.sh`; `scripts/docs-check.sh` intentionally does not run it.

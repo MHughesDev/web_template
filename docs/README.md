@@ -51,11 +51,9 @@ Ordered list of every docs/ subdirectory with description and link to its README
 - [optional-clients/](optional-clients/web.md) — Web and mobile profile documentation
 - [troubleshooting/](troubleshooting/README.md) — Common issues and solutions
 
-<!-- AUTO_INDEX_START -->
+## 18.0.2 Maintained docs index
 
-## 18.0.2 Auto-generated index
-
-_Machine listing of top-level docs paths — see sections above for curated descriptions._
+_This list is maintained by humans and AI agents as part of documentation changes. Do not wire documentation generation into CI to rewrite it automatically._
 
 - [adr/](adr/README.md)
 - [agents/](agents/README.md)
@@ -66,6 +64,7 @@ _Machine listing of top-level docs paths — see sections above for curated desc
 - `generated/`
 - [getting-started/](getting-started/README.md)
 - [glossary](glossary.md)
+- [integrations/](integrations/README.md)
 - [operations/](operations/README.md)
 - `optional-clients/`
 - [procedures/](procedures/README.md)
@@ -74,10 +73,6 @@ _Machine listing of top-level docs paths — see sections above for curated desc
 - `queue/`
 - [release/](release/README.md)
 - [repo-governance/](repo-governance/README.md)
-- [integrations/](integrations/README.md)
 - [runbooks/](runbooks/README.md)
 - [security/](security/README.md)
 - [troubleshooting/](troubleshooting/README.md)
-
-<!-- AUTO_INDEX_END -->
-

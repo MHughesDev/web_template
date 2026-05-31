@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # scripts/docs-generate.sh
-# Run documentation generation pipeline (skills/repo-governance/docs-generator.py).
+# Manual human/AI-agent tool: run documentation generation on demand, never from CI.
 
 set -euo pipefail
 

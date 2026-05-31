@@ -24,9 +24,9 @@ Docker not running → start Docker Desktop or `sudo systemctl start docker`. Pe
 
 Alembic revision not found → run `make db:reset`. Conflict in migration history → check `alembic history`.
 
-## 17.1.4 CI Drift (docs:check failing)
+## 17.1.4 Documentation Link Failures
 
-Generated docs out of sync → run `make docs:generate` and commit the result.
+`make docs:check` failures indicate broken links or stale repository references. Fix the referenced docs manually. If generated reference docs are stale, a human or AI agent may run `make docs:generate`, review the diff, and commit it.
 
 ## 17.1.5 Python Version Issues
 

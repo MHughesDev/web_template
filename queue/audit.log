@@ -16,3 +16,7 @@
 #   - Timestamps in UTC with millisecond precision
 #   - Initialization event logged to confirm audit trail is active
 {"timestamp": "1970-01-01T00:00:00.000Z", "action": "seed", "queue_id": "all", "actor": "template-init", "branch": null, "notes": "Queue initialized from template. Audit log started."}
+{"queue_id":"Q-132","batch":"template-upgrade-1","complexity":"M","status":"done","branch_created_at":"2026-05-17","archived_at":"2026-05-30T23:37:29.112548+00:00","pr_url":null,"review_rounds":null}
+{"queue_id":"Q-202","batch":"template-upgrade-2","complexity":"S","status":"done","branch_created_at":"2026-05-17","archived_at":"2026-05-30T23:37:29.943933+00:00","pr_url":null,"review_rounds":null}
+{"queue_id":"Q-217","batch":"template-upgrade-3","complexity":"S","status":"done","branch_created_at":"2026-05-17","archived_at":"2026-05-30T23:37:30.777530+00:00","pr_url":null,"review_rounds":null}
+{"queue_id":"Q-131","batch":"template-upgrade-1","complexity":"S","status":"cancelled","branch_created_at":"2026-05-17","archived_at":"2026-05-30T23:37:31.528050+00:00","pr_url":null,"review_rounds":null}

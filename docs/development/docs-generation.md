@@ -2,7 +2,7 @@
 doc_id: "3.3"
 title: "docs generation"
 section: "Development"
-summary: "How the deterministic docs-indexing pipeline works, what it generates, and what it explicitly is not."
+summary: "How manual human/AI-agent docs helpers work, what they can generate on demand, and what CI must not rewrite."
 updated: "2026-05-18"
 ---
 
@@ -13,7 +13,7 @@ updated: "2026-05-18"
 <!-- - Helper code: skills/repo-governance/docs-generator.py -->
 <!-- - Run: scripts/docs-generate.sh + scripts/docs-check.sh -->
 
-**Purpose:** Explain the deterministic docs-indexing pipeline that produces files under `docs/generated/` from authoritative sources in the repo.
+**Purpose:** Explain the manual, human/AI-agent-invoked docs helpers that can produce files under `docs/generated/` from authoritative sources in the repo. CI may check documentation links and references, but it must not run generators that rewrite docs.
 
 ## 3.3.1 What docs-generation is
 
@@ -28,7 +28,7 @@ The docs pipeline is a small, deterministic helper. It reads source artifacts (t
 | `docs/generated/cursor-rules.md` | `.cursor/rules/` | Rule index with scope and summary. |
 | `docs/generated/migrations.md` | `apps/api/app/alembic/versions/` | Alembic revision history. |
 
-The pipeline is driven by [`skills/repo-governance/docs-generator.py`](../../skills/repo-governance/docs-generator.py). It is invoked by `scripts/docs-generate.sh` (regenerate) and checked by `scripts/docs-check.sh` (drift verification in CI).
+The helper is driven by [`skills/repo-governance/docs-generator.py`](../../skills/repo-governance/docs-generator.py). It is invoked manually by humans or AI agents through `scripts/docs-generate.sh` / `make docs:generate`. `scripts/docs-check.sh` / `make docs:check` checks links and references only; it does not regenerate docs and does not fail on generated-doc drift.
 
 ## 3.3.2 What docs-generation is **not**
 
@@ -41,22 +41,22 @@ The pipeline is driven by [`skills/repo-governance/docs-generator.py`](../../ski
 | Command | Role |
 |---|---|
 | `make docs-generate` / `make docs:generate` | Run `scripts/docs-generate.sh` — regenerate every file under `docs/generated/`. |
-| `make docs-check` / `make docs:check` | Run `scripts/docs-check.sh` — verify `docs/generated/` matches the current sources (CI fails on drift). |
+| `make docs-check` / `make docs:check` | Run `scripts/docs-check.sh` — check links and repository references without generating or rewriting docs. |
 
 ## 3.3.4 Workflow
 
 1. Change source artifacts (`Makefile` targets, `Settings` fields, `compose.yml`, k8s manifests, cursor rules, alembic revisions).
-2. Run `make docs-generate`. Commit the resulting changes under `docs/generated/`.
-3. Run `make docs-check` before pushing.
-4. CI re-runs `docs-check` on every PR.
+2. If a human or AI agent decides generated reference docs should be refreshed, run `make docs-generate` and review the diff.
+3. Commit any accepted documentation changes under `docs/generated/`.
+4. Run `make docs-check` before pushing; CI uses the same link/reference check and does not run docs generation.
 
 ## 3.3.5 Extending the pipeline
 
 Adding a new generator means:
 
 - Implementing a new `DocTarget` in `skills/repo-governance/docs-generator.py` (each target is a single function that reads one source and returns a Markdown string).
-- Listing the new target in `_default_targets` or `extra` so it runs in both `generate` and `check` modes.
-- Ensuring the output path under `docs/generated/` is gitignored or that the file is committed; CI must be able to verify drift.
+- Listing the new target in `_default_targets` or `extra` so humans/AI agents can run it in `generate` mode when needed.
+- Ensuring the output path under `docs/generated/` is reviewed and committed when a human/AI agent accepts the generated diff. Do not add CI jobs that auto-regenerate or fail solely on generated-doc drift.
 
 Generators must be deterministic, side-effect-free, and stateless. Anything that requires judgment belongs in a skill, not the docs pipeline.
 
