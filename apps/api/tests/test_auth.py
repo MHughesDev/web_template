@@ -127,8 +127,8 @@ def test_access_token_null_sub_returns_403(client: TestClient) -> None:
     assert r.json()["detail"] == "Could not validate credentials"
 
 
-def test_access_token_empty_subject_returns_500(client: TestClient) -> None:
-    """`sub` is typed as UUID at the DB layer; empty string breaks bind coercion."""
+def test_access_token_empty_subject_returns_403(client: TestClient) -> None:
+    """`sub` typed as UUID; empty string fails pydantic coercion → 403 before DB."""
     token = jwt.encode(
         {
             "exp": datetime.now(UTC) + timedelta(hours=1),
@@ -138,7 +138,8 @@ def test_access_token_empty_subject_returns_500(client: TestClient) -> None:
         algorithm=security.ALGORITHM,
     )
     r = _post_test_token(client, {"Authorization": f"Bearer {token}"})
-    assert r.status_code == 500
+    assert r.status_code == 403
+    assert r.json()["detail"] == "Could not validate credentials"
 
 
 def test_access_token_inactive_user_returns_400(
