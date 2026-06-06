@@ -1,4 +1,4 @@
-# Root pyproject for the full-stack template.
+# Root pyproject for the full-stack web_template.
 # - Workspace coordinates: backend lives at apps/api (its own pyproject defines deps).
 # - This root file keeps repo-wide tooling config (ruff, mypy, pytest, coverage)
 #   and supplemental Python packages (packages/*).
@@ -7,9 +7,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "template"
+name = "web_template"
 version = "0.1.0"
-description = "Agent-operated full-stack template (FastAPI + React + Postgres)"
+description = "Agent-operated full-stack web_template (FastAPI + React + Postgres)"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }

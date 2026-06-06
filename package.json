@@ -1,5 +1,5 @@
 {
-  "name": "template-fullstack",
+  "name": "web_template-fullstack",
   "private": true,
   "workspaces": [
     "apps/web"

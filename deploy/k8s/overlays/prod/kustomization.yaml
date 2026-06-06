@@ -11,5 +11,5 @@ commonLabels:
   environment: production
 
 images:
-  - name: template-api
+  - name: web_template-api
     newTag: stable

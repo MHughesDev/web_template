@@ -11,5 +11,5 @@ commonLabels:
   environment: staging
 
 images:
-  - name: template-api
+  - name: web_template-api
     newTag: staging
