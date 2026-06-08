@@ -368,6 +368,16 @@ make pre-deploy-check ENV=staging
 
 ### Health Checks
 
+- [ ] **External services are reachable from this environment**
+  ```bash
+  make smoke-external
+  ```
+  Read-only, secret-safe connectivity check for whatever this deployment's
+  `.env` configures (database, SMTP, Sentry). Fails fast with `OK` / `FAILED`
+  / `not configured (skipped)` per service and a non-zero exit code if any
+  *configured* service is unreachable — run it before cutting over traffic
+  to catch a misconfigured `.env` early.
+
 - [ ] **Health endpoint responds**
   ```bash
   curl http://localhost:8000/api/v1/utils/health-check/

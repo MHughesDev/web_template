@@ -50,6 +50,7 @@ Table mapping each script to its Make target and purpose:
 | `db-reset.sh` | `make db:reset` | Drop/recreate local DB |
 | `seed-db.sh` | `make db:seed` | Seed sample data |
 | `health-check.sh` | `make health:check` | Check API health |
+| `smoke-external-services.sh` | `make smoke:external` | Read-only, secret-safe connectivity smoke test for configured external services (DB/SMTP/Sentry); run before deploying to verify `.env` points at reachable services |
 | `init-repo.sh` | `make init` | Initialization pre-checks |
 | `scaffold-module.sh` | `make scaffold:module` | Scaffold domain module |
 | `profile-enable.sh` | `make profile:enable` | Enable optional profile |

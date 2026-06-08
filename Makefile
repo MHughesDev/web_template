@@ -16,7 +16,7 @@ SHELL := /usr/bin/env bash
         codebase-summary skill-docs-gen \
         test-scaffold env-sync coverage-ratchet rule-lint adr-index \
         web-install generate-client \
-        clean health-check project-health \
+        clean health-check project-health smoke-external \
         hooks-install
 
 ## help: Show targets (see also: scripts/README.md)
@@ -279,10 +279,14 @@ health-check:
 project-health:
 	@scripts/project-health.sh
 
+## smoke-external: read-only connectivity smoke test for configured external services (DB/SMTP/Sentry)
+smoke-external:
+	@scripts/smoke-external-services.sh
+
 # --- Colon-style aliases (spec §10.2 and docs). GNU Make needs escaped colons in target names.
 .PHONY: skills\:list queue\:peek queue\:top-item queue\:validate queue\:archive queue\:archive-top queue\:pr-merge queue\:graph queue\:analyze queue\:metrics audit\:self rules\:check \
         docs\:check docs\:generate docs\:index security\:scan release\:prepare release\:verify docker\:up docker\:down \
-        health\:check project\:health profile\:enable \
+        health\:check project\:health smoke\:external profile\:enable \
         scaffold\:module test\:unit test\:integration \
         test\:smoke test\:affected preflight fmt\:fix fmt\:check prompt\:list db\:reset db\:seed ci\:migrate-dry-run image\:build image\:scan \
         k8s\:render k8s\:validate env\:generate skill\:docs-gen \
@@ -335,4 +339,5 @@ rule\:lint: rule-lint
 adr\:index: adr-index
 
 project\:health: project-health
+smoke\:external: smoke-external
 hooks\:install: hooks-install

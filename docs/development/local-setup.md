@@ -62,6 +62,7 @@ Run `make help` for the full list. Common targets:
 | `make security-scan` / `make security:scan` | Bandit + pip-audit |
 | `make secret-scan` / `make secret:scan` | Heuristic secret-pattern scan |
 | `make env-sync` / `make env:sync` | Compare `.env.example` with `Settings` fields |
+| `make smoke-external` / `make smoke:external` | Read-only connectivity smoke test for configured external services (DB/SMTP/Sentry) — verifies your `.env` points at reachable services |
 | `make test-scaffold MODULE=…` / `make test:scaffold` | Print pytest stubs for a router |
 | `make coverage-ratchet` / `make coverage:ratchet` | Compare `coverage.xml` to policy floor |
 | `make rule-lint` / `make rule:lint` | Lint `.cursor/rules` front matter |
