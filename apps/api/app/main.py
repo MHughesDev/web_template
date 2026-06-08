@@ -50,3 +50,10 @@ if settings.all_cors_origins:
     )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# --- MCP MODULE START ---
+if settings.MCP_ENABLED:
+    from app.mcp import mount_mcp
+
+    mount_mcp(app)
+# --- MCP MODULE END ---

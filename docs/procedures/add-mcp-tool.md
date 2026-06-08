@@ -23,8 +23,15 @@ For a **development-time** stdio MCP that wraps repo workflows in another tool o
 ## 5.2.3 Prerequisites
 
 - `fastapi-mcp` installed (see `pyproject.toml`)
-- MCP module mounted in `apps/api/app/main.py`
+- MCP module mounted in `apps/api/app/main.py` between the
+  `# --- MCP MODULE START/END ---` markers, gated by `settings.MCP_ENABLED`
+  (default `false` — flipping it on is a deliberate security-posture decision)
 - Understanding of MCP tool design principles
+
+**Default posture:** `app/mcp/__init__.py` ships with `include_tags=[]`
+(deny-by-default — no operations are exposed as MCP tools until you
+explicitly add tags to the allowlist) and auth-gates `/mcp` through the same
+`get_current_user` dependency as the rest of the API.
 
 ## 5.2.4 How tools are built
 
@@ -103,7 +110,7 @@ Protect MCP endpoints using `AuthConfig` and FastAPI dependencies:
 ```python
 from fastapi import Depends
 from fastapi_mcp.types import AuthConfig
-from apps.api.src.auth.dependencies import get_current_user
+from app.api.deps import get_current_user
 
 mcp = FastApiMCP(
     app,
@@ -112,6 +119,9 @@ mcp = FastApiMCP(
     auth_config=AuthConfig(dependencies=[Depends(get_current_user)]),
 )
 ```
+
+This is exactly how `app/mcp/__init__.py`'s `mount_mcp()` is wired — MCP tool
+calls go through the same auth dependency as regular API requests.
 
 See `fastapi_mcp.types.AuthConfig` for OAuth and metadata options.
 

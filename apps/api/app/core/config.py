@@ -109,6 +109,8 @@ class Settings(BaseSettings):
     HEALTH_CHECK_URLS: Annotated[list[AnyUrl] | str, BeforeValidator(parse_cors)] = []
     HEALTH_CHECK_TIMEOUT_SECONDS: float = 2.0
 
+    MCP_ENABLED: bool = False
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (
