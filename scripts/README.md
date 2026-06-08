@@ -52,6 +52,7 @@ Table mapping each script to its Make target and purpose:
 | `health-check.sh` | `make health:check` | Check API health |
 | `smoke-external-services.sh` | `make smoke:external` | Read-only, secret-safe connectivity smoke test for configured external services (DB/SMTP/Sentry); run before deploying to verify `.env` points at reachable services |
 | `init-repo.sh` | `make init` | Initialization pre-checks |
+| `doctor.sh` | `make doctor` (alias `make repo:doctor`) | Local dev-environment preflight: Python/bun versions, package-index reachability, venv presence, import smoke test, then chains into `preflight.sh`. Local diagnostic only — never run in CI |
 | `scaffold-module.sh` | `make scaffold:module` | Scaffold domain module |
 | `profile-enable.sh` | `make profile:enable` | Enable optional profile |
 | `generate-env.sh` | `make env:generate` | Generate .env |

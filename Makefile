@@ -16,7 +16,7 @@ SHELL := /usr/bin/env bash
         codebase-summary skill-docs-gen \
         test-scaffold env-sync coverage-ratchet rule-lint adr-index \
         web-install generate-client \
-        clean health-check project-health smoke-external \
+        clean health-check project-health smoke-external doctor \
         hooks-install
 
 ## help: Show targets (see also: scripts/README.md)
@@ -93,6 +93,10 @@ test-affected:
 ## preflight: fast deterministic checks (<10s fail-fast)
 preflight:
 	@scripts/preflight.sh
+
+## doctor: environment preflight — versions, registries, venv, import smoke test, then preflight
+doctor:
+	@bash scripts/doctor.sh
 
 ## migrate: alembic upgrade head
 migrate:
@@ -286,7 +290,7 @@ smoke-external:
 # --- Colon-style aliases (spec §10.2 and docs). GNU Make needs escaped colons in target names.
 .PHONY: skills\:list queue\:peek queue\:top-item queue\:validate queue\:archive queue\:archive-top queue\:pr-merge queue\:graph queue\:analyze queue\:metrics audit\:self rules\:check \
         docs\:check docs\:generate docs\:index security\:scan release\:prepare release\:verify docker\:up docker\:down \
-        health\:check project\:health smoke\:external profile\:enable \
+        health\:check project\:health smoke\:external repo\:doctor profile\:enable \
         scaffold\:module test\:unit test\:integration \
         test\:smoke test\:affected preflight fmt\:fix fmt\:check prompt\:list db\:reset db\:seed ci\:migrate-dry-run image\:build image\:scan \
         k8s\:render k8s\:validate env\:generate skill\:docs-gen \
@@ -340,4 +344,5 @@ adr\:index: adr-index
 
 project\:health: project-health
 smoke\:external: smoke-external
+repo\:doctor: doctor
 hooks\:install: hooks-install

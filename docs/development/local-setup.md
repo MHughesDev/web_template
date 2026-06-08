@@ -40,6 +40,7 @@ Run `make help` for the full list. Common targets:
 
 | Target | Role |
 |--------|------|
+| `make doctor` / `make repo:doctor` | **Run this first if your environment seems broken** — diagnoses Python/bun versions, package-index reachability, venv presence, and import smoke tests, then chains into `make preflight` |
 | `make lint` | Ruff lint |
 | `make fmt` | Apply Ruff formatting |
 | `make fmt-check` / `make fmt:check` | Ruff format verify (CI mode) |
