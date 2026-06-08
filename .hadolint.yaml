@@ -1,0 +1,4 @@
+# .hadolint.yaml
+# Hadolint configuration for apps/api/Dockerfile (CI: .github/workflows/security.yml).
+# Starting minimal — tune ignore rules once the first CI run reveals real findings.
+{}

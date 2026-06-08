@@ -39,3 +39,25 @@ jobs:
           exit-code: "1"
           trivy-config: trivy.yaml
           trivyignores: .trivyignore
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Required — gitleaks needs full git history to scan past commits.
+      - uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: hadolint/hadolint-action@v3.3.0
+        # Advisory first, promote to blocking once initial findings are triaged
+        # (mirrors the dependency-review "don't block CI if disabled" posture).
+        continue-on-error: true
+        with:
+          dockerfile: apps/api/Dockerfile
+          config: .hadolint.yaml
