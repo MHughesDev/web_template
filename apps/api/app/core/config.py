@@ -105,6 +105,10 @@ class Settings(BaseSettings):
     STRUCTLOG_ENABLED: bool = True
     REQUEST_ID_ENABLED: bool = True
 
+    HEALTH_DEPENDENCIES_ENABLED: bool = True
+    HEALTH_CHECK_URLS: Annotated[list[AnyUrl] | str, BeforeValidator(parse_cors)] = []
+    HEALTH_CHECK_TIMEOUT_SECONDS: float = 2.0
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (

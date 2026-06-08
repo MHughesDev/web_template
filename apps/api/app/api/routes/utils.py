@@ -1,7 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic.networks import EmailStr
 
 from app.api.deps import get_current_active_superuser
+from app.api.routes._health import DependencyStatus, probe_dependencies
+from app.core.config import settings
 from app.models import Message
 from app.utils import generate_test_email, send_email
 
@@ -29,3 +31,21 @@ def test_email(email_to: EmailStr) -> Message:
 @router.get("/health-check/")
 async def health_check() -> bool:
     return True
+
+
+@router.get(
+    "/health/dependencies/",
+    dependencies=[Depends(get_current_active_superuser)],
+)
+async def health_dependencies() -> dict[str, DependencyStatus]:
+    """
+    Probe the external dependencies this deployment has configured
+    (database, SMTP, Sentry, and any HEALTH_CHECK_URLS) and report
+    read-only reachability status for each. Never returns secret values.
+
+    Gated by settings.HEALTH_DEPENDENCIES_ENABLED — superuser-only since
+    it reveals infrastructure topology (hosts/ports).
+    """
+    if not settings.HEALTH_DEPENDENCIES_ENABLED:
+        raise HTTPException(status_code=404, detail="Not Found")
+    return await probe_dependencies(settings)
