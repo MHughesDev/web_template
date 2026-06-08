@@ -1,21 +1,19 @@
 """Auth audit log middleware.
 
-Emits a structured JSON line to stdout for every 401/403 response and for
-auth-related routes (login, logout, password-change). Controlled by
+Emits a structured log line for every 401/403 response and for auth-related
+routes (login, logout, password-change). Controlled by
 settings.AUDIT_LOG_ENABLED.
 """
 
-import json
-import logging
 import time
 
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 
-from app.core.config import settings
+from app.core.logging import get_logger
 
-logger = logging.getLogger("audit")
+logger = get_logger("audit")
 
 _AUTH_PATHS = {"/login", "/logout", "/password-change", "/reset-password"}
 
@@ -31,14 +29,16 @@ class AuditLogMiddleware(BaseHTTPMiddleware):
         status = response.status_code
 
         if status in (401, 403) or _is_auth_path(request.url.path):
-            record = {
-                "event": "auth",
-                "method": request.method,
-                "path": request.url.path,
-                "status": status,
-                "ip": (request.headers.get("X-Forwarded-For") or (request.client.host if request.client else "unknown")),
-                "duration_ms": round((time.time() - start) * 1000),
-            }
-            print(json.dumps(record), flush=True)
+            logger.info(
+                "auth",
+                method=request.method,
+                path=request.url.path,
+                status=status,
+                ip=(
+                    request.headers.get("X-Forwarded-For")
+                    or (request.client.host if request.client else "unknown")
+                ),
+                duration_ms=round((time.time() - start) * 1000),
+            )
 
         return response

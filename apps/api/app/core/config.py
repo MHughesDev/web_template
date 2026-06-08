@@ -102,6 +102,9 @@ class Settings(BaseSettings):
 
     AUDIT_LOG_ENABLED: bool = True
 
+    STRUCTLOG_ENABLED: bool = True
+    REQUEST_ID_ENABLED: bool = True
+
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
             message = (
