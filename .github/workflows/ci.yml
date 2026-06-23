@@ -15,7 +15,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - run: make lint
       - run: make fmt-check
@@ -23,7 +23,7 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - run: make typecheck
 
@@ -47,7 +47,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - name: Set DB URL
         run: |
@@ -71,14 +71,14 @@ jobs:
       - test
       - migrate-dry-run
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: make image-build
       - run: make image-scan || true
 
   migrate-dry-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - name: Alembic SQL render (offline dry-run)
         run: |
@@ -100,20 +100,20 @@ jobs:
   k8s-validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - run: make k8s-validate
 
   queue-validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - run: make queue-validate
 
   audit-self:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-python
       - run: make audit-self
