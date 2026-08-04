@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: hadolint/hadolint-action@v3.3.0
+      - uses: hadolint/hadolint-action@v3.4.0
         # Advisory first, promote to blocking once initial findings are triaged
         # (mirrors the dependency-review "don't block CI if disabled" posture).
         continue-on-error: true
